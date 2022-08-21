@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StoreSalesAccounting.Models.Repair>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ремонт</title>
+    <meta charset="utf-8" />
+</head>
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <div align="center">
+                <h2>Активный ремонт на @DateTime.Today.ToShortDateString()</h2>
+                
+            </div>            
+            <div class="card-body">
+                <table class="table" >
+                    <tr>
+                        <th>Дата поступления</th>
+                        <th>Кто принял</th>
+                        <th>Мастер</th>
+                        <th>Имя клиента</th>
+                        <th>Телефон клиента</th>
+                        <th width="10%">Инструмент</th>
+                        <th width="10%">Тех задание</th>
+                        <th>Свой чехол</th>
+                        <th>Дата окончания ремонта</th>
+                        <th>Выдано?</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.RepairStartDate.ToShortDateString()</td>
+                            <td>@item.ReceivingEmployee</td>
+                            <td>@item.Master</td>
+                            <td>@item.ClientName</td>
+                            <td>@item.ClientNumber</td>
+                            <td>@item.MusicalInstrument</td>
+                            <td>@item.TechnicalTask</td>
+                            <td>@item.GuitarCase</td>
+                            <td>@item.RepairEndDate.ToShortDateString()</td>
+                            <td>@item.GiveAway</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="card-footer">
+                <a asp-action="CreateNewRepair"><span class="btn btn-success">Заявка на ремонт</span></a>                
+            </div>
+        </div>
+    </div>
+</div>
+</html>

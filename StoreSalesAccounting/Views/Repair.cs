@@ -1,4 +1,4 @@
-﻿namespace StoreSalesAccounting.Models
+﻿namespace CashFlowWeb.Models
 {
     public class Repair
     {

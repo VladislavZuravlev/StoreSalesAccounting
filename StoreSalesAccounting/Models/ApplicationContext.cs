@@ -7,6 +7,8 @@ namespace StoreSalesAccounting.Models
     {
         public DbSet<Employee> Employees { get; set; } = null!;
         public DbSet<StoreRevenue> StoreRevenues { get; set; } = null!;
+        public DbSet<Repair> Repairs { get; set; } = null!;
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
