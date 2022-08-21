@@ -17,7 +17,7 @@ namespace StoreSalesAccounting.Controllers
             return View(await db.Repairs.ToListAsync());
         }
 
-        public async Task<IActionResult> CreateNewRepair()
+        public IActionResult CreateNewRepair()
         {
             return View();
         }
@@ -30,7 +30,7 @@ namespace StoreSalesAccounting.Controllers
             db.Repairs.Add(repair);
             await db.SaveChangesAsync();
 
-            return View("RepairIndex");
+            return RedirectToAction("RepairIndex");
         }
 
     }
