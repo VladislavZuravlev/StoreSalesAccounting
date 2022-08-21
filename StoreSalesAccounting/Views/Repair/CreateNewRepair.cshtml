@@ -13,8 +13,8 @@
                 <h2>Новая заявка на ремонт</h2>
             </div>
             <div class="card-body">
-                <table class="table">
-                    <form>
+                <form asp-action="CreateNewRepair" asp-controller="Repair">
+                    <table class="table">                    
                         <tr>
                             <th>Кто принял</th>
                             <th>Мастер</th>
@@ -29,44 +29,17 @@
                             <th><input class="myInput" type="text"  asp-for="ReceivingEmployee"/></th>                       
                             <th><input class="myInput" type="text" asp-for="Master"/></th>
                             <th><input class="myInput" type="text" asp-for="ClientName"/></th>
-                            <th><input class="myInput" type="number" asp-for="ClientNumber"/></th>
+                            <th><input class="myInput" type="text" asp-for="ClientNumber"/></th>
                             <th><input class="myInput" type="text" asp-for="MusicalInstrument"/></th>
                             <th><input class="myInput" type="text" asp-for="TechnicalTask"/></th>
                             <th><input type="checkbox" asp-for="GuitarCase"/></th>
                             <th><input class="myInput" type="date" asp-for="RepairEndDate"/></th>
-                        </tr>
-                    </form>
-                </table>
-                 <form asp-action="CreateNewRepair" asp-controller="Repair">
-                    <div class="mb-3">
-                        <label asp-for="ReceivingEmployee">Кто принял заявку?</label>
-                        <input type="text" asp-for="ReceivingEmployee"/><br />
-
-                        <label asp-for="Master">Кто мастер?</label>
-                        <input type="text" asp-for="Master"/><br />
-
-                        <label asp-for="ClientName">Имя клиента</label>
-                        <input type="text" asp-for="ClientName"/><br />
-
-                        <label asp-for="ClientNumber">Телефон клиента</label>
-                        <input type="number" asp-for="ClientNumber"/><br />
-
-                        <label asp-for="MusicalInstrument">Инструмент</label>
-                        <input type="text" asp-for="MusicalInstrument"/><br />
-
-                        <label asp-for="TechnicalTask">Тех задание</label>
-                        <input type="text" asp-for="TechnicalTask"/><br />
-
-                        <label asp-for="GuitarCase">Был ли чехол</label>
-                        <input type="checkbox" asp-for="GuitarCase"/><br />
-
-                        <label asp-for="RepairEndDate">Дата окончания ремонта</label>
-                        <input type="date" asp-for="RepairEndDate"/>                        
-                    </div>
+                        </tr>                    
+                    </table>
                     <div class="mb-3">
                         <button class="btn btn-success">Добавить</button>
                     </div>
-                 </form>
+                </form>                 
             </div>
         </div>
     </div>    

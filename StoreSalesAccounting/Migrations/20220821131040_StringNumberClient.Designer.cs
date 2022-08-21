@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreSalesAccounting.Models;
 
@@ -11,9 +12,10 @@ using StoreSalesAccounting.Models;
 namespace StoreSalesAccounting.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220821131040_StringNumberClient")]
+    partial class StringNumberClient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,9 +67,11 @@ namespace StoreSalesAccounting.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RepairId"), 1L, 1);
 
                     b.Property<string>("ClientName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClientNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("GiveAway")
@@ -77,12 +81,15 @@ namespace StoreSalesAccounting.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Master")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MusicalInstrument")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReceivingEmployee")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("RepairEndDate")
@@ -92,6 +99,7 @@ namespace StoreSalesAccounting.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TechnicalTask")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RepairId");
