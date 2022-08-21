@@ -1,0 +1,42 @@
+﻿@model IEnumerable<StoreSalesAccounting.Models.StoreRevenue>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Выручка</title>
+    <meta charset="utf-8" />
+</head>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div align="center">
+                <h2>Продажи магазина</h2>
+                <form>
+                    <div>
+                        <label >Дата c:</label>
+                        <input type="date" name="startDate"/>
+                        <label >по:</label>
+                        <input type="date" name="endDate"/>
+                        <input type="submit" class="btn btn-success" value="Фильтр" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr><th>Наличные</th><th>Безналичные</th><th>Перевод СБП</th><th>Итого</th><th>Дата</th></tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.StoreCash</td>
+                            <td>@item.StoreNonCash</td>
+                            <td>@item.StoreOnlineCash</td>
+                            <td>@item.StoreTotalRevenue</td>
+                            <td>@item.Day.ToShortDateString()</td>
+                        </tr>
+                    }
+                </table>                
+            </div>
+        </div>
+    </div>
+</div>
+</html>

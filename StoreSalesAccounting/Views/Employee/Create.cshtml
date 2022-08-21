@@ -1,0 +1,29 @@
+﻿@model StoreSalesAccounting.Models.Employee;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сотрудники</title>
+    <meta charset="utf-8" />
+</head>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h2>Добавить продавца в смену</h2>
+            </div>
+            <div class="card-body">
+                 <form asp-action="create" asp-controller="Employee">
+                    <div class="mb-3">
+                        <label asp-for="Name">Имя</label>
+                        <input type="text" asp-for="Name"/>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-success">Добавить</button>
+                    </div>
+                 </form>
+            </div>
+        </div>
+    </div>    
+</div>
+</html>

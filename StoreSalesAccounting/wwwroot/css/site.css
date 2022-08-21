@@ -1,0 +1,145 @@
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+}
+
+footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+}
+
+.list-unstyled {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000000;
+    background: #fff;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
+
+.nav {
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.nav-item {
+    display: inline-block;
+    vertical-align: middle;
+    transition: 0.4s;
+}
+
+.nav-item--collections {
+    background: #228b22;
+    white-space: normal;
+    padding: 0px 20px;
+}
+
+.nav-item + .nav-item {
+    padding-left: 20px;
+}
+
+.nav-item > a {
+    position: relative;
+    display: block;
+    padding: 15px 0px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+}
+
+    .nav-item > a:before {
+        top: 0px;
+    }
+
+    .nav-item > a:after {
+        bottom: 0px;
+    }
+
+.nav-item:hover > a:before, .nav-item:hover > a:after, .nav-item.is-active > a:before, .nav-item.is-active > a:after {
+    opacity: 1;
+}
+
+.nav-item:hover > a:before, .nav-item.is-active > a:before {
+    top: 9px;
+}
+
+.nav-item:hover > a:after, .nav-item.is-active > a:after {
+    bottom: 9px;
+}
+
+.nav-item > a:before, .nav-item > a:after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    background-color: #228b22;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.nav-item--dropdown svg {
+    height: 24px;
+    width: 24px;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.container {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #010203;
+    border-color: #010203;
+}
+
+    .btn-success:hover {
+        color: #fff;
+        background-color: #228b22;
+        border-color: #228b22
+    }
+
+.myInput {
+    width: 100px;
+    height: 30px;
+}

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guitarget</title>
+    <link rel="icon" href="/Image/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CashFlowWeb.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>        
+       <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-5 ">
+            <div class="container">
+                <div class=" row col">
+                    <nav class="nav">
+                        <ul class="list-unstyled nav-items">
+                            <li class="nav-item nav-item--collections">
+                                <a asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                            </li>                         
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Employee" asp-action="PrintEmployee">Сотрудники</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="StoreRevenue" asp-action="PrintStoreSales">Продажи</a>
+                            </li>
+                        </ul>
+                    </nav>                    
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Guitarget - <a class="link-success" href=https://www.guitarget.ru/>Наш сайт</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
