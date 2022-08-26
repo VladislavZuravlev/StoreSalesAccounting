@@ -14,6 +14,12 @@ namespace StoreSalesAccounting.Models
         {
             
         }
-        
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Repair>()
+                .HasIndex(r => r.ClientNumber)
+                .IsUnique();
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace StoreSalesAccounting.Controllers
         public bool Cash { get; set; }
         public bool NonCash { get; set; }
         public bool OnlineCash { get; set; }
+        public string Note { get; set; }
 
 
         ApplicationContext db;
@@ -62,11 +63,19 @@ namespace StoreSalesAccounting.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Employee employee)
         {
-            employee.EmployeeDay = DateTime.Today;
-            db.Employees.Add(employee);
-            await db.SaveChangesAsync();
-            return RedirectToAction("PrintEmployee");
+            if (employee.Name == null)
+            {
+                return RedirectToAction("PrintEmployee");
+            }
+            else
+            {
+                employee.EmployeeDay = DateTime.Today;
+                db.Employees.Add(employee);
+                await db.SaveChangesAsync();
+                return RedirectToAction("PrintEmployee");
+            }            
         }
+
 
 
         public IActionResult NewEnrollment()
@@ -79,7 +88,8 @@ namespace StoreSalesAccounting.Controllers
         {
             if (name != null)
             {
-                var employee = db.Employees.FirstOrDefault(item => item.EmployeeDay == DateTime.Today && item.Name == name);
+                var employee = db.Employees.FirstOrDefault(item => item.EmployeeDay == DateTime.Today 
+                                                                && item.Name == name);
 
                 if (employee != null)
                 {
@@ -91,7 +101,7 @@ namespace StoreSalesAccounting.Controllers
                         employee.EmployeeOnlineCash += deposit;
 
                     if (product != null)
-                        employee.Product += $"{product}, ";
+                        employee.Product += $"{product}; ";
 
                     employee.EmployeeTotalRevenue = employee.EmployeeCash + employee.EmployeeNonCash + employee.EmployeeOnlineCash;
 

@@ -12,8 +12,8 @@ using StoreSalesAccounting.Models;
 namespace StoreSalesAccounting.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220821135007_RepairUpdate")]
-    partial class RepairUpdate
+    [Migration("20220826114230_RepairTableInsteadOfBoolString")]
+    partial class RepairTableInsteadOfBoolString
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,6 +48,10 @@ namespace StoreSalesAccounting.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Product")
@@ -67,24 +71,31 @@ namespace StoreSalesAccounting.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RepairId"), 1L, 1);
 
                     b.Property<string>("ClientName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClientNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("GiveAway")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("GiveAway")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("GuitarCase")
-                        .HasColumnType("bit");
+                    b.Property<string>("GuitarCase")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Master")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MusicalInstrument")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReceivingEmployee")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("RepairEndDate")
@@ -94,9 +105,13 @@ namespace StoreSalesAccounting.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TechnicalTask")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RepairId");
+
+                    b.HasIndex("ClientNumber")
+                        .IsUnique();
 
                     b.ToTable("Repairs");
                 });

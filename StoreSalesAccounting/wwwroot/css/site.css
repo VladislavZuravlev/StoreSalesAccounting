@@ -73,13 +73,13 @@ body {
     color: #fff;
 }
 
-    .nav-item > a:before {
-        top: 0px;
-    }
+.nav-item > a:before {
+    top: 0px;
+}
 
-    .nav-item > a:after {
-        bottom: 0px;
-    }
+.nav-item > a:after {
+    bottom: 0px;
+}
 
 .nav-item:hover > a:before, .nav-item:hover > a:after, .nav-item.is-active > a:before, .nav-item.is-active > a:after {
     opacity: 1;
@@ -127,19 +127,28 @@ body {
     padding-left: 10px;
 }
 
-.btn-success {
+.btn-green {
     color: #fff;
     background-color: #010203;
     border-color: #010203;
 }
 
-    .btn-success:hover {
-        color: #fff;
-        background-color: #228b22;
-        border-color: #228b22
-    }
+.btn-green:hover {
+    color: #fff;
+    background-color: #228b22;
+    border-color: #228b22
+}
 
 .myInput {
-    width: 100px;
-    height: 30px;
+    width: 120px;
+    height: 40px;
 }
+
+.link-green {
+    color: #010203;
+}
+
+.link-green:hover, .link-success:focus {
+    color: #228b22
+}
+
