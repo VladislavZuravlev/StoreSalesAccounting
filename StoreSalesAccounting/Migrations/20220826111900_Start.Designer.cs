@@ -12,8 +12,8 @@ using StoreSalesAccounting.Models;
 namespace StoreSalesAccounting.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220821131040_StringNumberClient")]
-    partial class StringNumberClient
+    [Migration("20220826111900_Start")]
+    partial class Start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,6 +48,10 @@ namespace StoreSalesAccounting.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Product")
@@ -72,7 +76,7 @@ namespace StoreSalesAccounting.Migrations
 
                     b.Property<string>("ClientNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("GiveAway")
                         .HasColumnType("bit");
@@ -103,6 +107,9 @@ namespace StoreSalesAccounting.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RepairId");
+
+                    b.HasIndex("ClientNumber")
+                        .IsUnique();
 
                     b.ToTable("Repairs");
                 });

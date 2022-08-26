@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-3">
         <div class="card">
-            <div align="center">
+            <div align="center" class="card-header">
                 <h2>Смена продавцов на @DateTime.Today.ToShortDateString()</h2>
                 <form>
                     <div>
@@ -19,18 +19,48 @@
                         <input type="date" name="startDate"/>
                         <label >по:</label>
                         <input type="date" name="endDate"/>
-                        <input type="submit" class="btn btn-success" value="Фильтр" />
+                        <input type="submit" class="btn btn-green" value="Фильтр" />
                     </div>
                 </form>
             </div>            
             <div class="card-body">
                 <table class="table" >
-                    <tr><th>Имя</th><th width="30%">Проданный товар</th><th>Наличные</th><th>Безналичные</th><th>Перевод СБП</th><th>Общая выручка продавца</th><th>Дата</th></tr>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Проданный товар</th>
+                        <th>Наличные</th>
+                        <th>Безналичные</th>
+                        <th>Перевод СБП</th>
+                        <th>Дата</th>
+                        <th>Примечание</th>
+                    </tr>
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td>@item.Name</td>
                             <td>@item.Product</td>
+                            <td>@item.EmployeeCash</td>
+                            <td>@item.EmployeeNonCash</td>
+                            <td>@item.EmployeeOnlineCash</td>
+                            <td>@item.EmployeeDay.ToShortDateString()</td>
+                            <td>@item.Note</td>
+                        </tr>
+                    }
+                </table>
+            
+                <table class="table" >
+                    <tr class="card-header">
+                        <th>Имя</th>
+                        <th>Наличные</th>
+                        <th>Безналичные</th>
+                        <th>Перевод СБП</th>
+                        <th>Общая выручка продавца</th>
+                        <th>Дата</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
                             <td>@item.EmployeeCash</td>
                             <td>@item.EmployeeNonCash</td>
                             <td>@item.EmployeeOnlineCash</td>
@@ -40,9 +70,9 @@
                     }
                 </table>
             </div>
-            <div class="card-footer">
-                <a asp-action="Create"><span class="btn btn-success">Добавить продавца</span></a>
-                <a asp-action="NewEnrollment"><span class="btn btn-success">Добавить продажу</span></a>
+            <div class="card-footer">                
+                <a asp-action="NewEnrollment"><span class="btn btn-green">Добавить продажу</span></a>
+                <a asp-action="Create"><span class="btn btn-green">Добавить продавца</span></a>
             </div>
         </div>
     </div>

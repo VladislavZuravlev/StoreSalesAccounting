@@ -16,16 +16,16 @@
             <div class="card-body">
                 <table class="table" >
                     <tr>
-                        <th>Дата поступления</th>
-                        <th>Кто принял</th>
-                        <th>Мастер</th>
-                        <th>Имя клиента</th>
-                        <th>Телефон клиента</th>
+                        <th width="10%">Дата поступления</th>
+                        <th width="5%">Кто принял</th>
+                        <th width="5%">Мастер</th>
+                        <th width="10%">Имя клиента</th>
+                        <th width="10%">Телефон клиента</th>
                         <th width="10%">Инструмент</th>
-                        <th width="10%">Тех задание</th>
-                        <th>Свой чехол</th>
-                        <th>Дата окончания ремонта</th>
-                        <th>Выдано?</th>
+                        <th width="30%">Тех задание</th>
+                        <th width="5%">Свой чехол</th>
+                        <th width="10%">Дата окончания ремонта</th>
+                        <th width="5%">Выдано?</th>
                     </tr>
                     @foreach (var item in Model)
                     {
@@ -40,12 +40,18 @@
                             <td>@item.GuitarCase</td>
                             <td>@item.RepairEndDate.ToShortDateString()</td>
                             <td>@item.GiveAway</td>
+                            <td>
+                                <a class="link-green" asp-action="Edit" asp-controller="Repair" asp-route-id="@item.RepairId">Изменить</a>
+                            </td>
+                            <td>
+                                <a class="link-green" asp-action="IssueTool" asp-controller="Repair" asp-route-id="@item.RepairId">Выдать</a>
+                            </td>
                         </tr>
                     }
                 </table>
             </div>
             <div class="card-footer">
-                <a asp-action="CreateNewRepair"><span class="btn btn-success">Заявка на ремонт</span></a>                
+                <a asp-action="CreateNewRepair"><span class="btn btn-green">Заявка на ремонт</span></a>                
             </div>
         </div>
     </div>

@@ -1,0 +1,30 @@
+﻿@model StoreSalesAccounting.Models.Repair
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Правка</title>
+    <meta charset="utf-8" />
+</head>
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header" align="center">
+                <h2>Исправить запись ремонта</h2>
+            </div>
+            <div class="card-body">                
+                <form asp-action="edit" asp-controller="repair" asp-route-id="@Model.RepairId">
+
+                    <label asp-for="Master">Мастер</label><br />
+                    <input type="text" asp-for="Master" /><br />
+                    <br />
+                    <label asp-for="TechnicalTask">Тех задание</label><br />
+                    <input type="text" asp-for="TechnicalTask" /><br />
+                    <br />
+                    <button class="btn btn-green">Исправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
