@@ -6,15 +6,6 @@ namespace StoreSalesAccounting.Controllers
 {
     public class EmployeeController : Controller
     {
-        public string? Name { get; set; }
-        public string? Product { get; set; }
-        public int Deposit { get; set; }
-        public bool Cash { get; set; }
-        public bool NonCash { get; set; }
-        public bool OnlineCash { get; set; }
-        public string Note { get; set; }
-
-
         ApplicationContext db;
 
         public EmployeeController(ApplicationContext context)

@@ -16,10 +16,10 @@
                 <form asp-action="edit" asp-controller="repair" asp-route-id="@Model.RepairId">
 
                     <label asp-for="Master">Мастер</label><br />
-                    <input type="text" asp-for="Master" /><br />
+                    <input type="text" name="Master" /><br />
                     <br />
                     <label asp-for="TechnicalTask">Тех задание</label><br />
-                    <input type="text" asp-for="TechnicalTask" /><br />
+                    <input type="text" name="TechnicalTask" /><br />
                     <br />
                     <button class="btn btn-green">Исправить</button>
                 </form>

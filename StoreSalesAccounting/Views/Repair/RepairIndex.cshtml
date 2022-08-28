@@ -11,7 +11,17 @@
         <div class="card">
             <div align="center">
                 <h2>Активный ремонт на @DateTime.Today.ToShortDateString()</h2>
-                
+                <form>
+                    <div>
+                        <label >Номер телефона:</label>
+                        <input type="text" name="phoneNumber"/>
+                        <label >Дата поступления c:</label>
+                        <input type="date" name="startDate"/>
+                        <label >по:</label>
+                        <input type="date" name="endDate"/>
+                        <input type="submit" class="btn btn-green" value="Фильтр" />
+                    </div>
+                </form>
             </div>            
             <div class="card-body">
                 <table class="table" >

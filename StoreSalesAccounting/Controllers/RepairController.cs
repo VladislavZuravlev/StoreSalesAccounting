@@ -12,9 +12,26 @@ namespace StoreSalesAccounting.Controllers
             db = context;
         }
 
-        public async Task<IActionResult> RepairIndex()
+        public async Task<IActionResult> RepairIndex(DateTime? startDate, DateTime? endDate, string phoneNumber)
         {
-            return View(await db.Repairs.ToListAsync());
+            if (phoneNumber != null)
+            {
+                return View(await db.Repairs.Where(item => item.ClientNumber == phoneNumber).ToListAsync());
+            }
+            else if (startDate != null && endDate == null)
+            {
+                return View(await db.Repairs.Where(item => item.RepairStartDate == startDate).ToListAsync());
+            }
+            else if (startDate != null && endDate != null)
+            {
+                return View(await db.Repairs.Where(item => item.RepairStartDate >= startDate 
+                                                        && item.RepairStartDate <= endDate).ToListAsync());
+            }
+            else
+            {
+                return View(await db.Repairs.Where(item => item.GiveAway == "Нет").ToListAsync());
+            }
+            
         }
 
         public IActionResult CreateNewRepair()

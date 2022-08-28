@@ -16,15 +16,15 @@
                 <form method="post" action="~/Employee/NewEnrollment">
                     <div class="mb-3">
                         <label asp-for="Name">Имя</label><br />
-                        <input type="text" asp-for="Name" /><br /><br />
+                        <input type="text" name="Name" /><br /><br />
                         <label asp-for="Product">Проданный товар</label><br />
-                        <input type="text" asp-for="Product" /><br /><br />
+                        <input type="text" name="Product" /><br /><br />
                         <label asp-for="Deposit">Сумма</label><br />
-                        <input type="number" asp-for="Deposit" /><br /><br />
+                        <input type="number" name="Deposit" /><br /><br />
                         <label>Способ облаты:</label><br />
-                        <input type="checkbox" asp-for="Cash" />Наличные<br />
-                        <input type="checkbox" asp-for="NonCash" />Безналичные<br />
-                        <input type="checkbox" asp-for="OnlineCash" />Перевод<br />                        
+                        <input type="checkbox" name="Cash" />Наличные<br />
+                        <input type="checkbox" name="NonCash" />Безналичные<br />
+                        <input type="checkbox" name="OnlineCash" />Перевод<br />                        
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-green">Внести</button>

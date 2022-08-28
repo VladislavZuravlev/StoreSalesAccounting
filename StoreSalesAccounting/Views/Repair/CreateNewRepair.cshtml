@@ -26,19 +26,19 @@
                             <th>Дата окончания ремонта</th>
                         </tr>
                         <tr>
-                            <th><input class="myInput" type="text" asp-for="ReceivingEmployee" /></th>
-                            <th><input class="myInput" type="text" asp-for="Master" /></th>
-                            <th><input class="myInput" type="text" asp-for="ClientName" /></th>
-                            <th><input class="myInput" type="text" asp-for="ClientNumber" /></th>
-                            <th><input class="myInput" type="text" asp-for="MusicalInstrument" /></th>
-                            <th><input class="myInput" type="text" asp-for="TechnicalTask" /></th>
+                            <th><input class="myInput" type="text" name="ReceivingEmployee" /></th>
+                            <th><input class="myInput" type="text" name="Master" /></th>
+                            <th><input class="myInput" type="text" name="ClientName" /></th>
+                            <th><input class="myInput" type="text" name="ClientNumber" /></th>
+                            <th><input class="myInput" type="text" name="MusicalInstrument" /></th>
+                            <th><input class="myInput" type="text" name="TechnicalTask" /></th>
                             <th>
-                                <select asp-for="GuitarCase">
+                                <select name="GuitarCase">
                                     <option value="Да">Да</option>
                                     <option value="Нет">Нет</option>
                                 </select>
                             </th>
-                            <th><input class="myInput" type="date" asp-for="RepairEndDate" /></th>
+                            <th><input class="myInput" type="date" name="RepairEndDate" /></th>
                         </tr>
                     </table>
                     <div class="mb-3">
