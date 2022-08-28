@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StoreSalesAccounting.Models.Employee>
+﻿@model IEnumerable<StoreSalesAccounting.Models.Sale>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
     <div class="col-3">
         <div class="card">
             <div align="center" class="card-header">
-                <h2>Продавцы на @DateTime.Today.ToShortDateString()</h2>
+                <h2>Продажи за @DateTime.Today.ToShortDateString()</h2>
                 <form>
                     <div>
                         <label >Имя:</label>
@@ -27,28 +27,29 @@
                 <table class="table" >
                     <tr>
                         <th>Имя продавца</th>
-                        <th>Наличные</th>
-                        <th>Безналичные</th>
-                        <th>Переводы СБП</th>
-                        <th>Общая выручка</th>
+                        <th>Проданный товар</th>
+                        <th>Способ оплаты</th>
+                        <th>Сумма оплаты</th>
+                        <th>Примечание</th>
                         <th>Дата</th>
                         
                     </tr>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Name</td>
-                            <td>@item.Cash</td>
-                            <td>@item.NonCash</td>
-                            <td>@item.OnlineCash</td>
-                            <td>@item.TotalRevenue</td>
+                            <td>@item.Employee.Name</td>
+                            <td>@item.ProductName</td>
+                            <td>@item.PaymentMethod</td>
+                            <td>@item.SaleAmount</td>
+                            <td>@item.Note</td>
                             <td>@item.Day</td>
                         </tr>
                     }
                 </table>
             </div>            
-            <div class="card-footer">                
-                <a asp-action="CreateNewEmployee"><span class="btn btn-green">Добавить продавца</span></a>                
+            <div class="card-footer">   
+                <a asp-action="CreateNewEmployee" asp-controller="Employee"><span class="btn btn-green">Добавить продавца</span></a>
+                <a asp-action="NewEnrollment"><span class="btn btn-green">Добавить продажу</span></a>                
             </div>
         </div>
     </div>

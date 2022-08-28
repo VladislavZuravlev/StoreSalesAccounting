@@ -17,7 +17,7 @@ namespace StoreSalesAccounting.Controllers
         {
             if (name == null && startDate == null)
             {
-                return View(await db.Employees.Where(item => item.EmployeeDay == DateTime.Today).ToListAsync());
+                return View(await db.Employees.Where(item => item.Day == DateTime.Today).ToListAsync());
             }
             else if (name != null && startDate == null && endDate == null)
             {
@@ -25,85 +25,39 @@ namespace StoreSalesAccounting.Controllers
             }
             else if (name == null && startDate != null && endDate == null)
             {
-                return View(await db.Employees.Where(item => item.EmployeeDay == startDate).ToListAsync());
+                return View(await db.Employees.Where(item => item.Day == startDate).ToListAsync());
             }
             else if (name != null && startDate != null && endDate == null)
             {
                 return View(await db.Employees.Where(item => item.Name == name
-                                                          && item.EmployeeDay == startDate).ToListAsync());
+                                                          && item.Day == startDate).ToListAsync());
             }
             else if (name == null && startDate != null && endDate != null)
             {
-                return View(await db.Employees.Where(item => item.EmployeeDay >= startDate
-                                                          && item.EmployeeDay <= endDate).ToListAsync());
+                return View(await db.Employees.Where(item => item.Day >= startDate
+                                                          && item.Day <= endDate).ToListAsync());
             }
             else
             {
                 return View(await db.Employees.Where(item => item.Name == name
-                                                          && item.EmployeeDay >= startDate
-                                                          && item.EmployeeDay <= endDate).ToListAsync());
+                                                          && item.Day >= startDate
+                                                          && item.Day <= endDate).ToListAsync());
             }
-
         }
 
-        public IActionResult Create()
+        public IActionResult CreateNewEmployee()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Employee employee)
+        public async Task<IActionResult> CreateNewEmployee(Employee employee)
         {
-            if (employee.Name == null)
-            {
-                return RedirectToAction("PrintEmployee");
-            }
-            else
-            {
-                employee.EmployeeDay = DateTime.Today;
-                db.Employees.Add(employee);
-                await db.SaveChangesAsync();
-                return RedirectToAction("PrintEmployee");
-            }            
-        }
-
-
-
-        public IActionResult NewEnrollment()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> NewEnrollment(string name, string product, int deposit, bool cash, bool nonCash, bool onlineCash)
-        {
-            if (name != null)
-            {
-                var employee = db.Employees.FirstOrDefault(item => item.EmployeeDay == DateTime.Today 
-                                                                && item.Name == name);
-
-                if (employee != null)
-                {
-                    if (cash)
-                        employee.EmployeeCash += deposit;
-                    else if (nonCash)
-                        employee.EmployeeNonCash += deposit;
-                    else if (onlineCash)
-                        employee.EmployeeOnlineCash += deposit;
-
-                    if (product != null)
-                        employee.Product += $"{product}; ";
-
-                    employee.EmployeeTotalRevenue = employee.EmployeeCash + employee.EmployeeNonCash + employee.EmployeeOnlineCash;
-
-                    db.Employees.Update(employee);
-                }
-            }
-
+            employee.Day = DateTime.Today;
+            db.Employees.Add(employee);
             await db.SaveChangesAsync();
             return RedirectToAction("PrintEmployee");
         }
-
 
 
     }

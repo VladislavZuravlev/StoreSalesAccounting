@@ -18,12 +18,15 @@
                         <ul class="list-unstyled nav-items">
                             <li class="nav-item nav-item--collections">
                                 <a asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
-                            </li>                         
-                            <li class="nav-item">
-                                <a asp-area="" asp-controller="Employee" asp-action="PrintEmployee">Сотрудники</a>
                             </li>
                             <li class="nav-item">
-                                <a asp-area="" asp-controller="StoreRevenue" asp-action="PrintStoreSales">Продажи</a>
+                                <a asp-area="" asp-controller="Employee" asp-action="PrintEmployee">Продавцы</a>
+                            </li>                         
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Sale" asp-action="PrintSales">Дневные продажи</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="StoreRevenue" asp-action="PrintStoreSales">Общие продажи</a>
                             </li>
                             <li class="nav-item">
                                 <a asp-area="" asp-controller="Repair" asp-action="RepairIndex">Ремонт</a>

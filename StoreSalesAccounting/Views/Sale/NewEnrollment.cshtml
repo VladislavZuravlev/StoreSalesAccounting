@@ -1,0 +1,47 @@
+﻿@model StoreSalesAccounting.Controllers.SaleController;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>новая продажа</title>
+    <meta charset="utf-8" />
+</head>
+<div class="row">
+    <div class="col-3">
+        <div class="card" style="width:max-content">
+            <div align="center" class="card-header">
+                <h2>новая продажа</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <table class="table">
+                        <tr>
+                            <th>Имя продавца</th>
+                            <th>Проданный товар</th>
+                            <th>Способ оплаты</th>
+                            <th>Сумма оплаты</th>
+                            <th>Примечание</th>
+                        </tr>
+                        <tr>
+                            <th><input type="text" name="name" /></th>
+                            <th><input type="text" name="product" /></th>
+                            <th>
+                                <select name="payment">
+                                    <option value="Наличные">Наличные</option>
+                                    <option value="Безналичные">Безналичные</option>
+                                    <option value="Перевод СБП">Перевод СБП</option>
+                                </select>
+                            </th>
+                            <th><input type="number" name="paymentSum" /></th>
+                            <th><input type="text" name="note" /></th>
+                        </tr>
+                    </table>
+                    <div>
+                        <input type="submit" class="btn btn-green" value="Добавить" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

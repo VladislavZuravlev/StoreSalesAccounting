@@ -12,8 +12,8 @@ using StoreSalesAccounting.Models;
 namespace StoreSalesAccounting.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220826114230_RepairTableInsteadOfBoolString")]
-    partial class RepairTableInsteadOfBoolString
+    [Migration("20220827110819_NewModelSale")]
+    partial class NewModelSale
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,38 +26,32 @@ namespace StoreSalesAccounting.Migrations
 
             modelBuilder.Entity("StoreSalesAccounting.Models.Employee", b =>
                 {
-                    b.Property<int>("EmployeeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("EmployeeCash")
+                    b.Property<int>("Cash")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EmployeeDay")
+                    b.Property<DateTime>("Day")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("EmployeeNonCash")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EmployeeOnlineCash")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EmployeeTotalRevenue")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("NonCash")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Product")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OnlineCash")
+                        .HasColumnType("int");
 
-                    b.HasKey("EmployeeId");
+                    b.Property<int>("TotalRevenue")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Employees");
                 });
@@ -116,6 +110,41 @@ namespace StoreSalesAccounting.Migrations
                     b.ToTable("Repairs");
                 });
 
+            modelBuilder.Entity("StoreSalesAccounting.Models.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Day")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SaleAmount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Sales");
+                });
+
             modelBuilder.Entity("StoreSalesAccounting.Models.StoreRevenue", b =>
                 {
                     b.Property<int>("StoreRevenueId")
@@ -142,6 +171,22 @@ namespace StoreSalesAccounting.Migrations
                     b.HasKey("StoreRevenueId");
 
                     b.ToTable("StoreRevenues");
+                });
+
+            modelBuilder.Entity("StoreSalesAccounting.Models.Sale", b =>
+                {
+                    b.HasOne("StoreSalesAccounting.Models.Employee", "Employee")
+                        .WithMany("Sales")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("StoreSalesAccounting.Models.Employee", b =>
+                {
+                    b.Navigation("Sales");
                 });
 #pragma warning restore 612, 618
         }

@@ -44,11 +44,11 @@ namespace StoreSalesAccounting.Controllers
 
             foreach (var item in db.Employees.ToList())
             {
-                if (item.EmployeeDay == DateTime.Today)
+                if (item.Day == DateTime.Today)
                 {
-                    newStore.StoreCash += item.EmployeeCash;
-                    newStore.StoreNonCash += item.EmployeeNonCash;
-                    newStore.StoreOnlineCash += item.EmployeeOnlineCash;
+                    newStore.StoreCash += item.Cash;
+                    newStore.StoreNonCash += item.NonCash;
+                    newStore.StoreOnlineCash += item.OnlineCash;
                 }
             }
             newStore.StoreTotalRevenue = newStore.StoreCash + newStore.StoreNonCash + newStore.StoreOnlineCash;

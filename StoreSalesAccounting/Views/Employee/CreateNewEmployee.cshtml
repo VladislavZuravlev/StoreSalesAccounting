@@ -13,10 +13,10 @@
                 <h2>Добавить продавца в смену</h2>
             </div>
             <div class="card-body">
-                 <form asp-action="create" asp-controller="Employee">
+                 <form asp-action="CreateNewEmployee" asp-controller="Employee">
                     <div class="mb-3">
-                        <label asp-for="Name">Имя</label>
-                        <input type="text" name="Name"/>
+                        <label>Имя продавца</label>
+                        <input type="text" name="name"/>
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-green">Добавить</button>

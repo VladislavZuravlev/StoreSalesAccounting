@@ -4,16 +4,15 @@ namespace StoreSalesAccounting.Models
 {
     public class Employee
     {
-        [Key]
-        public int EmployeeId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string? Product { get; set; }
-        public int EmployeeCash { get; set; }
-        public int EmployeeNonCash { get; set; }
-        public int EmployeeOnlineCash { get; set; }
-        public int EmployeeTotalRevenue { get; set; }
-        public DateTime EmployeeDay { get; set; }
-        public string? Note { get; set; }
+        public int Cash { get; set; }
+        public int NonCash { get; set; }
+        public int OnlineCash { get; set; }
+        public int TotalRevenue { get; set; }
+        public DateTime Day { get; set; }
+
+        public virtual ICollection<Sale> Sales { get; set; }
 
     }
 }
